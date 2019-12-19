@@ -1,6 +1,6 @@
 ﻿namespace Game.State
 {
-    public class InitialState : GameState
+    public class SetupState : GameState
     {
         private GameState playState;
 
