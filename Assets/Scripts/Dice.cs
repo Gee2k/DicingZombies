@@ -28,7 +28,7 @@ public abstract class Dice<T> : MonoBehaviour
         return hit.transform.tag == "game_ceiling";
     }
     
-    protected T GetDiceValue()
+    public T GetDiceValue()
     {
         Sides currentSide = Sides.Unknown;
         
