@@ -1,6 +1,6 @@
-﻿using Game;
+﻿using Game.State;
 
-namespace Play
+namespace Play.State
 {
     public class SwitchPlayerState : GameState
     {

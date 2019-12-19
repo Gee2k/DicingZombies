@@ -1,4 +1,4 @@
-﻿namespace Game
+﻿namespace Game.State
 {
    public class PlayState : GameState
     {
