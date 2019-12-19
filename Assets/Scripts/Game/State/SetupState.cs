@@ -2,14 +2,14 @@
 {
     public class SetupState : GameState
     {
-        private GameState playState;
+        private PlayState playState;
 
         public override GameState update()
         {
             throw new System.NotImplementedException();
         }
 
-        public void setPlayState(GameState gamestate)
+        public void setPlayState(PlayState gamestate)
         {
             this.playState = gamestate;
         }

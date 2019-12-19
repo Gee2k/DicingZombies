@@ -4,14 +4,14 @@ namespace Play.State
 {
     public class EndTurnState : GameState
     {
-        private GameState switchPlayerState;
+        private SwitchPlayerState switchPlayerState;
 
         public override GameState update()
         {
             throw new System.NotImplementedException();
         }
 
-        public void setSwitchPlayerState(GameState gameState)
+        public void setSwitchPlayerState(SwitchPlayerState gameState)
         {
             this.switchPlayerState = gameState;
         }
