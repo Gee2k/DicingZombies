@@ -1,4 +1,4 @@
-﻿namespace States
+﻿namespace Game
 {
     public abstract class GameState
     {
