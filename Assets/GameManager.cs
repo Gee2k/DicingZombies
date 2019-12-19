@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    List<> dices;
+    
 
     // Start is called before the first frame update
     void Start()
