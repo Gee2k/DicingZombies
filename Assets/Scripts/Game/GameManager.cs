@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
         playState.setEndState(endState);
         endState.setSetupState(setupState);
 
-        setupState.update();
+        GameState currentState = setupState;
+        while(currentState != null)
+        {
+            currentState.update();
+        }
     }
 }
