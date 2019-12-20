@@ -1,4 +1,4 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace Game.State
 {
@@ -15,6 +15,7 @@ namespace Game.State
 
         public override GameState update()
         {
+            Debug.Log("[PlayState] inside");
             if (_game != null)
             {
                 game = game.checkGameState();

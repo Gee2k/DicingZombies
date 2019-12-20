@@ -1,4 +1,5 @@
 ﻿using Game.State;
+using UnityEngine;
 
 namespace Play.State
 {
@@ -8,6 +9,7 @@ namespace Play.State
 
         public override GameState update()
         {
+            Debug.Log("[EndTurnState] inside");
             return switchPlayerState;
         }
 

@@ -1,6 +1,7 @@
 ﻿using Game.State;
 using Play.ZombieDice;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Play.State
 {
@@ -18,6 +19,7 @@ namespace Play.State
 
         public override GameState update()
         {
+            Debug.Log("[RollDiceState] inside");
             return endTurnState;
         }
 

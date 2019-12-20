@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.State;
+using UnityEngine;
 
 namespace Game
 {
@@ -25,6 +26,7 @@ namespace Game
 
             public Game build()
             {
+                Debug.Log("[Game] new game created of type " + _ruleBook.ruleBookTitle + "");
                 //upgrade Players to RuleBook players
                 List<Player> ruleBookPlayers = new List<Player>();
                 

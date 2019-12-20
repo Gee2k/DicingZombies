@@ -13,6 +13,7 @@ namespace Play.ZombieDice
 
         public DicingZombiesRuleBook()
         {
+            ruleBookTitle = "DicingZombies";
             //find Models for Dice and attach
             // List<GameObject> gameObjects = (Resources.FindObjectsOfTypeAll(typeof(GameObject))).OfType<GameObject>().ToList();
             
@@ -39,7 +40,6 @@ namespace Play.ZombieDice
             rollDiceState.setEndTurnState(endTurnState);
 
             return switchPlayerState;
-
         }
     }
 }

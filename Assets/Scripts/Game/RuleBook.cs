@@ -4,7 +4,13 @@ using Game.State;
 
 public abstract class RuleBook
 {
-    public String RuleBookTitle;
+    private String _ruleBookTitle;
     public abstract Player getRuleBookPlayer(Player player);
     public abstract GameState GetInitialPlayState();
+
+    public string ruleBookTitle
+    {
+        get => _ruleBookTitle;
+        set => _ruleBookTitle = value;
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Play.ZombieDice;
+using UnityEngine;
 
 namespace Game.State
 {
@@ -21,6 +22,7 @@ namespace Game.State
 
         public override GameState update()
         {
+            Debug.Log("[SetupState] inside");
             //create game Logic here
             
             

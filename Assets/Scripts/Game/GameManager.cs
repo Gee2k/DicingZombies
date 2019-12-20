@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Game.State;
 
 public class GameManager : MonoBehaviour
@@ -14,8 +15,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Console.WriteLine("[GameManager] inside");
         if (_gameState == null)
         {
+            Console.WriteLine("[GameManager] create new Game");
             SetupGameStates();
         }
         _gameState = _gameState.update();

@@ -1,4 +1,6 @@
-﻿namespace Game.State
+﻿using UnityEngine;
+
+namespace Game.State
 {
     public class EndState : GameState
     {
@@ -6,6 +8,7 @@
 
         public override GameState update()
         {
+            Debug.Log("[EndState] inside");
             //game end
 
             return null;
