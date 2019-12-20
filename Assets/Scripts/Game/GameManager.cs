@@ -3,7 +3,7 @@ using Game.State;
 
 public class GameManager : MonoBehaviour
 {
-    private GameState _currentState;
+    private GameState _gameState;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this._currentState = _currentState.update();
+        if (_gameState == null)
+        {
+            SetupGameStates();
+        }
+        _gameState = _gameState.update();
     }
 
     private void SetupGameStates()
@@ -24,9 +28,9 @@ public class GameManager : MonoBehaviour
         EndState endState = new EndState();
 
         setupState.SetPlayState(playState);
-        playState.setEndState(endState);
+        playState.SetEndState(endState);
         endState.setSetupState(setupState);
 
-        this._currentState = setupState;
+        _gameState = setupState;
     }
 }

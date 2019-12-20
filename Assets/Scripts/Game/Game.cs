@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Game.State;
 
 namespace Game
 {
@@ -8,10 +9,11 @@ namespace Game
         {
             private RuleBook _ruleBook;
             private List<Player> _players;
+            private GameState _state;
 
             public Builder usingGameRules(RuleBook ruleBook)
             {
-                this._ruleBook = ruleBook;
+                _ruleBook = ruleBook;
                 return this;
             }
 
@@ -31,17 +33,29 @@ namespace Game
                     ruleBookPlayers.Add(_ruleBook.getRuleBookPlayer(player));
                 }
                 
-                return new Game(_ruleBook, ruleBookPlayers);
+                return new Game(_ruleBook, ruleBookPlayers, _ruleBook.GetInitialPlayState());
             }
         }
 
         private RuleBook _ruleBook;
         private List<Player> _players;
+        private GameState _state;
 
-        private Game(RuleBook ruleBook, List<Player> players)
+        private Game(RuleBook ruleBook, List<Player> players, GameState initialPlayLoopState)
         {
-            this._ruleBook = ruleBook;
-            this._players = players;
+            _ruleBook = ruleBook;
+            _players = players;
+            _state = initialPlayLoopState;
+        }
+        
+        public Game checkGameState()
+        {
+            if (_state != null)
+            {
+                _state = _state.update();
+                return this;
+            }
+            return null;
         }
     }
 }

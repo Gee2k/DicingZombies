@@ -34,9 +34,9 @@ namespace Game.State
             return this;
     }
 
-        public void SetPlayState(PlayState gamestate)
+        public void SetPlayState(PlayState playState)
         {
-            this._playState = gamestate;
+            _playState = playState;
         }
     }
 }
