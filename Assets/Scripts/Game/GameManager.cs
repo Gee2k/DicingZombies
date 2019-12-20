@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Game.State;
 
 public class GameManager : MonoBehaviour
 {
-    
+    private GameState currentState;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +14,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.currentState = currentState.update();
     }
 
     private void setupGameStates()
@@ -29,10 +27,6 @@ public class GameManager : MonoBehaviour
         playState.setEndState(endState);
         endState.setSetupState(setupState);
 
-        GameState currentState = setupState;
-        while(currentState != null)
-        {
-            currentState.update();
-        }
+        this.currentState = setupState;
     }
 }
