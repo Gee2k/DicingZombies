@@ -7,9 +7,15 @@ namespace Game.State
         private PlayState playState;
         private List<Player> players;
 
+        public SetupState()
+        {
+            Player player = new Player("George");
+            players.Add(player);
+        }
+
         public override GameState update()
         {
-            throw new System.NotImplementedException();
+            return playState;
         }
 
         public void setPlayState(PlayState gamestate)
