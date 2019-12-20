@@ -9,9 +9,9 @@
             throw new System.NotImplementedException();
         }
 
-        public void setSetupState(SetupState gameState)
+        public void setSetupState(SetupState setupState)
         {
-            this.setupState = gameState;
+            this.setupState = setupState;
         }
     }
 }

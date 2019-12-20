@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using ZombieDare;
 
 abstract public class DiceBehaviour : MonoBehaviour
 {
