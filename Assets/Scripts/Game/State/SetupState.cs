@@ -1,8 +1,11 @@
-﻿namespace Game.State
+﻿using System.Collections.Generic;
+
+namespace Game.State
 {
     public class SetupState : GameState
     {
         private PlayState playState;
+        private List<Player> players;
 
         public override GameState update()
         {
