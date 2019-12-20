@@ -1,4 +1,5 @@
 using Game;
+using Game.State;
 using UnityEngine;
 
 namespace Play.ZombieDice
@@ -24,6 +25,11 @@ namespace Play.ZombieDice
         public override Player getRuleBookPlayer(Player player)
         {
             return new ZombiePlayer(player.name);
+        }
+
+        public override GameState GetInitialPlayState()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

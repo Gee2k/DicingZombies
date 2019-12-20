@@ -4,7 +4,7 @@ namespace Game.State
 {
     public class PlayState : GameState
     {
-        private EndState endState;
+        private EndState _endState;
         private Game _game;
 
         public Game game
@@ -15,12 +15,20 @@ namespace Game.State
 
         public override GameState update()
         {
-            throw new NotImplementedException();
+            if (_game != null)
+            {
+                game = game.checkGameState();
+                return this;
+            }
+            
+            // examine scoring and send to endstate
+            
+            return _endState;
         }
 
-        public void setEndState(EndState endState)
+        public void SetEndState(EndState endState)
         {
-            this.endState = endState;
+            _endState = endState;
         }
     }
 }

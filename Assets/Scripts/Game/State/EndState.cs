@@ -2,16 +2,18 @@
 {
     public class EndState : GameState
     {
-        private SetupState setupState;
+        private SetupState _setupState;
 
         public override GameState update()
         {
-            throw new System.NotImplementedException();
+            //game end
+
+            return null;
         }
 
         public void setSetupState(SetupState setupState)
         {
-            this.setupState = setupState;
+            _setupState = setupState;
         }
     }
 }
