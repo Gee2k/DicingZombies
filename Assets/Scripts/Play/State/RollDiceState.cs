@@ -6,7 +6,6 @@ namespace Play.State
 {
     public class RollDiceState : GameState
     {
-        private RollDiceState rollDiceState;
         private EndTurnState endTurnState;
         private ZombiePlayer activePlayer;
         private const int MAX_HIT_COUNT = 3;
@@ -20,11 +19,6 @@ namespace Play.State
         public override GameState update()
         {
             return endTurnState;
-        }
-
-        public void setRollDiceState(RollDiceState gameState)
-        {
-            this.rollDiceState = gameState;
         }
 
         public void setEndTurnState(EndTurnState gameState)

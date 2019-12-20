@@ -1,5 +1,6 @@
 using Game;
 using Game.State;
+using Play.State;
 using UnityEngine;
 
 namespace Play.ZombieDice
@@ -29,7 +30,16 @@ namespace Play.ZombieDice
 
         public override GameState GetInitialPlayState()
         {
-            throw new System.NotImplementedException();
+            EndTurnState endTurnState = new EndTurnState();
+            SwitchPlayerState switchPlayerState = new SwitchPlayerState();
+            RollDiceState rollDiceState = new RollDiceState();
+
+            endTurnState.setSwitchPlayerState(switchPlayerState);
+            switchPlayerState.setRollDiceState(rollDiceState);
+            rollDiceState.setEndTurnState(endTurnState);
+
+            return switchPlayerState;
+
         }
     }
 }

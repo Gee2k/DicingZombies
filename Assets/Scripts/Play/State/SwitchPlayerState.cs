@@ -8,7 +8,7 @@ namespace Play.State
 
         public override GameState update()
         {
-            throw new System.NotImplementedException();
+            return rollDiceState;
         }
 
         public void setRollDiceState(RollDiceState gameState)
