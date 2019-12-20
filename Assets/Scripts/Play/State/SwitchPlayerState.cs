@@ -4,14 +4,14 @@ namespace Play.State
 {
     public class SwitchPlayerState : GameState
     {
-        private GameState rollDiceState;
+        private RollDiceState rollDiceState;
 
         public override GameState update()
         {
             throw new System.NotImplementedException();
         }
 
-        public void setRollDiceState(GameState gameState)
+        public void setRollDiceState(RollDiceState gameState)
         {
             this.rollDiceState = gameState;
         }
