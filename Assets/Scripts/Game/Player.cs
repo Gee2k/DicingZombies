@@ -2,11 +2,17 @@
 {
     public class Player
     {
-        protected string name;
+        protected string _name;
+
+        public string name
+        {
+            get => _name;
+            set => _name = value;
+        }
 
         public Player(string name)
         {
-            this.name = name;
+            this._name = name;
         }
     }
 }

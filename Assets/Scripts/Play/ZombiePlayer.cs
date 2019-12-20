@@ -9,7 +9,7 @@ namespace Play
         public bool isWinner = false;
         public bool hasFinishedRound = false;
         private int brainScoreAmount = 0;
-        public List<ZombieDice> dicePool; // TODO: proper handling through methods instead of public accessibility
+        public List<ZombieDice.ZombieDice> dicePool; // TODO: proper handling through methods instead of public accessibility
         public List<ZombieDiceSideValue> diceResult; // TODO: proper handling through methods instead of public accessibility
 
         public ZombiePlayer(string name) : base(name)
@@ -17,7 +17,7 @@ namespace Play
 
         }
 
-        public void setDicePool(List<ZombieDice> dicePool)
+        public void setDicePool(List<ZombieDice.ZombieDice> dicePool)
         {
             this.dicePool = dicePool;
         }

@@ -5,18 +5,18 @@ namespace Game.State
 {
     public class SetupState : GameState
     {
-        private PlayState playState;
-        private List<Player> players;
+        private PlayState _playState;
+        private List<Player> _players = new List<Player>();
         private Game _game;
 
         public SetupState()
         {
             Player player = new Player("George");
-            players.Add(player);
+            _players.Add(player);
             
             //for test purpose create Game here
             RuleBook dicingZombiesRuleBook = new DicingZombiesRuleBook();
-            _game = new Game.Builder().withPlayers(players).usingGameRules(dicingZombiesRuleBook).build();
+            _game = new Game.Builder().withPlayers(_players).usingGameRules(dicingZombiesRuleBook).build();
         }
 
         public override GameState update()
@@ -28,15 +28,15 @@ namespace Game.State
             // check for game to be setup -> switch state
             if (_game != null)
             {
-                playState.game = _game;
-                return playState;
+                _playState.game = _game;
+                return _playState;
             }
             return this;
     }
 
-        public void setPlayState(PlayState gamestate)
+        public void SetPlayState(PlayState gamestate)
         {
-            this.playState = gamestate;
+            this._playState = gamestate;
         }
     }
 }
