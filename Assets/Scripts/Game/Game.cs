@@ -1,17 +1,15 @@
 using System.Collections.Generic;
-using Game;
 
-namespace ZombieDare
+namespace Game
 {
     public class Game
     {
-        private class Builder
+        public class Builder
         {
-            private Game game;
             private RuleBook ruleBook;
             private List<Player> players;
-            
-            public Builder withRules(RuleBook ruleBook)
+
+            public Builder usingGameRules(RuleBook ruleBook)
             {
                 this.ruleBook = ruleBook;
                 return this;
@@ -22,14 +20,13 @@ namespace ZombieDare
                 this.players = players;
                 return this;
             }
-            
+
             public Game build()
             {
-                game = new Game(ruleBook, players);
-                return game;
+                return new Game(ruleBook, players);
             }
         }
-        
+
         private RuleBook ruleBook;
         private List<Player> players;
 

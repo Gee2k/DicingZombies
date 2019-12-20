@@ -1,4 +1,3 @@
-﻿namespace ZombieDare
-{
-    public enum DiceValues { brain, escape, hit }
-}
+﻿
+public enum DiceValues { brain, escape, hit }
+
