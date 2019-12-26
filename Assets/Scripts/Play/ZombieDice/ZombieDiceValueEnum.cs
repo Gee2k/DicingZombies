@@ -3,7 +3,7 @@ namespace Play.ZombieDice
     public enum ZombieDiceValueEnum
     {
         Brain,
-        Steps,
+        Esacpe,
         Hit
     }
 }

@@ -79,7 +79,7 @@ namespace Play.State
         {
             foreach (ZombieDiceSideValue diceValue in activePlayer.diceResult)
             {
-                if (ZombieDiceValueEnum.Steps.Equals(diceValue.getValue()))
+                if (ZombieDiceValueEnum.Esacpe.Equals(diceValue.getValue()))
                 {
                     //activePlayer.dicePool.Add(); TODO: restock dicePool from steps
                 }
