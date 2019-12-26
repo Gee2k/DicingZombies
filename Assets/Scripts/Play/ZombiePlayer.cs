@@ -10,7 +10,7 @@ namespace Play
         public bool hasFinishedRound = false;
         private int brainScoreAmount = 0;
         public List<ZombieDice.ZombieDice> dicePool; // TODO: proper handling through methods instead of public accessibility
-        public List<ZombieDiceSideValue> diceResult; // TODO: proper handling through methods instead of public accessibility
+        public List<ZombieDice.ZombieDice> diceResult; // TODO: proper handling through methods instead of public accessibility
 
         public ZombiePlayer(string name) : base(name)
         {

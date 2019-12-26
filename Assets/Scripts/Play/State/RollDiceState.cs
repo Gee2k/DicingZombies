@@ -31,15 +31,15 @@ namespace Play.State
         public void setActivePlayer(ZombiePlayer player)
         {
             this.activePlayer = player;
-            player.diceResult = new List<ZombieDiceSideValue>();
+            player.diceResult = new List<ZombieDice.ZombieDice>();
         }
 
         public bool isPlayerDead()
         {
             int hitCount = 0;
-            foreach(ZombieDiceSideValue diceValue in activePlayer.diceResult)
+            foreach(ZombieDice.ZombieDice dice in activePlayer.diceResult)
             {
-                if(ZombieDiceValueEnum.Hit.Equals(diceValue.getValue()))
+                if(ZombieDiceValueEnum.Hit.Equals(dice.GetDiceValue()))
                 {
                     hitCount++;
                 }
@@ -71,26 +71,35 @@ namespace Play.State
 
         private void restockPool()
         {
-            restockFromSteps();
+            restockFromEscapes();
             restockFromBrains();
         }
 
-        private void restockFromSteps()
+        private void restockFromEscapes()
         {
-            foreach (ZombieDiceSideValue diceValue in activePlayer.diceResult)
+            foreach (ZombieDice.ZombieDice dice in activePlayer.diceResult)
             {
-                if (ZombieDiceValueEnum.Esacpe.Equals(diceValue.getValue()))
+                if (ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()))
                 {
                     //activePlayer.dicePool.Add(); TODO: restock dicePool from steps
                 }
             }
+            activePlayer.diceResult.RemoveAll(dice => ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()));
         }
 
         private void restockFromBrains()
         {
-            if(activePlayer.dicePool.Count <= DICE_ROLL_AMOUNT)
+            if (activePlayer.dicePool.Count <= DICE_ROLL_AMOUNT)
             {
-                //restock from brains? or random? read rules
+                foreach (ZombieDice.ZombieDice dice in activePlayer.diceResult)
+                {
+                    if (ZombieDiceValueEnum.Brain.Equals(dice.GetDiceValue()))
+                    {
+
+                        //activePlayer.dicePool.Add();  //restock from all brains
+                    }
+
+                }
             }
         }
     }

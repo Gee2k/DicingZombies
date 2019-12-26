@@ -4,10 +4,16 @@ namespace Play.ZombieDice
 {
     public class ZombieDiceSideValue : DiceSideValue
     {
-        private String _color;
+        private ZombieDiceSideColorEnum _color;
         private ZombieDiceValueEnum _zombieDiceValueEnum;
 
-        public String getColor()
+        public ZombieDiceSideValue(ZombieDiceSideColorEnum color, ZombieDiceValueEnum value) : base()
+        {
+            this._color = color;
+            this._zombieDiceValueEnum = value;
+        }
+
+        public ZombieDiceSideColorEnum getColor()
         {
             return this._color;
         }
