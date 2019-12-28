@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using Play.ZombieDice;
 using UnityEngine;
+using Play;
+using Play.ZombieDice;
 
 namespace Game.State
 {
@@ -12,10 +13,12 @@ namespace Game.State
 
         public SetupState()
         {
-            Player player = new Player("George");
-            _players.Add(player);
-            
             //for test purpose create Game here
+            ZombieNameGenerator generator = new ZombieNameGenerator();
+            Player player = new Player(generator.getRandomZombieName());
+            _players.Add(player);
+            Debug.Log("[SetupState] Player " + player.name + " created.");
+
             RuleBook dicingZombiesRuleBook = new DicingZombiesRuleBook();
             _game = new Game.Builder().withPlayers(_players).usingGameRules(dicingZombiesRuleBook).build();
         }

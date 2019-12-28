@@ -81,7 +81,7 @@ namespace Play.State
             {
                 if (ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()))
                 {
-                    //activePlayer.dicePool.Add(); TODO: restock dicePool from steps
+                    activePlayer.dicePool.Add(dice);
                 }
             }
             activePlayer.diceResult.RemoveAll(dice => ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()));
@@ -95,8 +95,7 @@ namespace Play.State
                 {
                     if (ZombieDiceValueEnum.Brain.Equals(dice.GetDiceValue()))
                     {
-
-                        //activePlayer.dicePool.Add();  //restock from all brains
+                        activePlayer.dicePool.Add(dice);
                     }
 
                 }
