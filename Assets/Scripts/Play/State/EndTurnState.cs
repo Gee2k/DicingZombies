@@ -10,7 +10,8 @@ namespace Play.State
         public override GameState update()
         {
             Debug.Log("[EndTurnState] inside");
-            return switchPlayerState;
+            // return switchPlayerState;
+            return null;    //testing end of game
         }
 
         public void setSwitchPlayerState(SwitchPlayerState gameState)

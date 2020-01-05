@@ -5,12 +5,26 @@ using Game.State;
 public class GameManager : MonoBehaviour
 {
     private GameState _gameState;
+    private GameObject _mainMenuUI;
+    
+    private void Start()
+    {
+        _mainMenuUI = GameObject.Find("MainMenu");
+    }
 
     // Update is called once per frame
     void Update()
     {
         Console.WriteLine("[GameManager] inside");
-        _gameState = _gameState?.update();
+        if (_gameState != null)
+        {
+            _gameState = _gameState?.update();
+        }
+        else if(_gameState == null && !_mainMenuUI.activeSelf)
+        {
+            _mainMenuUI.SetActive(true);
+            Debug.Log("[GameManager] reenabled Menu");
+        }
     }
 
     public void SetupGame(RuleBook ruleBook)
