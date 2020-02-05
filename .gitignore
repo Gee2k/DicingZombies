@@ -1,6 +1,18 @@
 
-# Created by https://www.gitignore.io/api/unity,rider,visualstudio
-# Edit at https://www.gitignore.io/?templates=unity,rider,visualstudio
+# Created by https://www.gitignore.io/api/unity,rider,visualstudio,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=unity,rider,visualstudio,visualstudiocode
+
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
 
 # Visual Studio 2015/2017 cache/options directory
 # Uncomment if you have tasks that create the project's static files in wwwroot
