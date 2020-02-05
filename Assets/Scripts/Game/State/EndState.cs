@@ -2,11 +2,11 @@
 
 namespace Game.State
 {
-    public class EndState : GameState
+    public class EndState : IGameState
     {
         private SetupState _setupState;
 
-        public override GameState update()
+        public IGameState update()
         {
             Debug.Log("[EndState] inside");
             //game end

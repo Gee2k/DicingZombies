@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Play.State
 {
-    public class RollDiceState : GameState
+    public class RollDiceState : IGameState
     {
         private EndTurnState endTurnState;
         private ZombiePlayer activePlayer;
@@ -17,7 +17,7 @@ namespace Play.State
 
         }
 
-        public override GameState update()
+        public IGameState update()
         {
             Debug.Log("[RollDiceState] inside");
             return endTurnState;

@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Play.State
 {
-    public class SwitchPlayerState : GameState
+    public class SwitchPlayerState : IGameState
     {
         private RollDiceState rollDiceState;
 
-        public override GameState update()
+        public IGameState update()
         {
 
             Debug.Log("[SwitchPlayerState] inside");

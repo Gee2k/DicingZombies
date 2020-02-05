@@ -2,7 +2,7 @@
 
 namespace Game.State
 {
-    public class PlayState : GameState
+    public class PlayState : IGameState
     {
         private EndState _endState;
         private Game _game;
@@ -13,7 +13,7 @@ namespace Game.State
             set => _game = value;
         }
 
-        public override GameState update()
+        public IGameState update()
         {
             Debug.Log("[PlayState] inside");
             if (_game != null)

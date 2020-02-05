@@ -4,7 +4,7 @@ using Game.State;
 
 public class GameManager : MonoBehaviour
 {
-    private GameState _gameState;
+    private IGameState _gameState;
     private GameObject _mainMenuUI;
     
     private void Start()

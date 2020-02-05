@@ -10,7 +10,7 @@ namespace Game
         {
             private RuleBook _ruleBook;
             private List<Player> _players;
-            private GameState _state;
+            private IGameState _state;
 
             public Builder usingGameRules(RuleBook ruleBook)
             {
@@ -41,9 +41,9 @@ namespace Game
 
         private RuleBook _ruleBook;
         private List<Player> _players;
-        private GameState _state;
+        private IGameState _state;
 
-        private Game(RuleBook ruleBook, List<Player> players, GameState initialPlayLoopState)
+        private Game(RuleBook ruleBook, List<Player> players, IGameState initialPlayLoopState)
         {
             _ruleBook = ruleBook;
             _players = players;

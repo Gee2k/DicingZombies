@@ -29,7 +29,7 @@ namespace Play.ZombieDice
             return new ZombiePlayer(player.name);
         }
 
-        public override GameState GetInitialPlayState()
+        public override IGameState GetInitialPlayState()
         {
             EndTurnState endTurnState = new EndTurnState();
             SwitchPlayerState switchPlayerState = new SwitchPlayerState();

@@ -6,7 +6,7 @@ public abstract class RuleBook
 {
     private String _ruleBookTitle;
     public abstract Player getRuleBookPlayer(Player player);
-    public abstract GameState GetInitialPlayState();
+    public abstract IGameState GetInitialPlayState();
 
     public string ruleBookTitle
     {

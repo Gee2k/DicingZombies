@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Play.State
 {
-    public class EndTurnState : GameState
+    public class EndTurnState : IGameState
     {
         private SwitchPlayerState switchPlayerState;
 
-        public override GameState update()
+        public IGameState update()
         {
             Debug.Log("[EndTurnState] inside");
             // return switchPlayerState;

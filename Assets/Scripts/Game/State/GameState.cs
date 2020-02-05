@@ -1,8 +1,7 @@
 ﻿namespace Game.State
 {
-    public abstract class GameState
+    public interface IGameState
     {
-        public abstract GameState update();
+        IGameState update();
     }
-
 }
