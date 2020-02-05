@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Play.State
 {
-    public class SwitchPlayerState : IGameState
+    public class SwitchPlayerState : GenericGameState
     {
         private RollDiceState rollDiceState;
 

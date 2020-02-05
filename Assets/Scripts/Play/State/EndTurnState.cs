@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Play.State
 {
-    public class EndTurnState : IGameState
+    public class EndTurnState : GenericGameState
     {
         private SwitchPlayerState switchPlayerState;
 
