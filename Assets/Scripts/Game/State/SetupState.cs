@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Play;
-using Play.ZombieDice;
+using Play.DicingZombies;
+using Play.DicingZombies.Assets.Dice;
+using Game.Assets.Player;
 
 namespace Game.State
 {

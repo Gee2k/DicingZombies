@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Game.State;
 using UnityEngine;
+using Game.Assets.Player;
 
 namespace Game
 {

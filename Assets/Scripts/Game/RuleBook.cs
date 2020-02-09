@@ -1,6 +1,7 @@
 using System;
 using Game;
 using Game.State;
+using Game.Assets.Player;
 
 public abstract class RuleBook
 {
