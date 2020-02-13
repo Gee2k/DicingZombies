@@ -1,17 +1,20 @@
 using System;
-using Game;
-using Game.State;
-using Game.Assets.Player;
+using Base;
+using Base.State;
+using Base.Assets;
 
-public abstract class RuleBook
+namespace Base
 {
-    private String _ruleBookTitle;
-    public abstract Player getRuleBookPlayer(Player player);
-    public abstract IGameState GetInitialPlayState();
-
-    public string ruleBookTitle
+    public abstract class RuleBook
     {
-        get => _ruleBookTitle;
-        set => _ruleBookTitle = value;
+        private String _ruleBookTitle;
+        public abstract Player getRuleBookPlayer(Player player);
+        public abstract IGameState GetInitialPlayState();
+
+        public string ruleBookTitle
+        {
+            get => _ruleBookTitle;
+            set => _ruleBookTitle = value;
+        }
     }
 }

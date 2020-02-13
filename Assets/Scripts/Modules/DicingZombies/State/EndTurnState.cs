@@ -1,7 +1,7 @@
-﻿using Game.State;
+﻿using Base.State;
 using UnityEngine;
 
-namespace Play.DicingZombies.State
+namespace Modules.DicingZombies.State
 {
     public class EndTurnState : GenericGameState, IGameState
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.State
+namespace Base.State
 {
     public class PlayState : IGameState
     {

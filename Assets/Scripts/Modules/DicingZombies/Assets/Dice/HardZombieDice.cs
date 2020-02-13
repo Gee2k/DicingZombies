@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Play.DicingZombies.Assets.Dice;
 
-namespace Play.DicingZombies
+namespace Modules.DicingZombies.Assets.Dice
 {
     public class HardZombieDice : ZombieDice
     {

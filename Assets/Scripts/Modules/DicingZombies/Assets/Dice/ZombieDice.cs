@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Game.Assets.Dice;
+using Base.Assets.Dice;
 
-namespace Play.DicingZombies.Assets.Dice
+namespace Modules.DicingZombies.Assets.Dice
 {
-    public class ZombieDice : Dice<ZombieDiceSideValue>
+    public class ZombieDice : DiceBehaviour<ZombieDiceSideValue>
     {
         public ZombieDice(Dictionary<Sides, ZombieDiceSideValue> diceSideValues) : base(diceSideValues)
         {

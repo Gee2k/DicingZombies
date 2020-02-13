@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Assets.Dice
+namespace Base.Assets.Dice
 {
-    public abstract class Dice<T> : MonoBehaviour
+    public abstract class DiceBehaviour<T> : MonoBehaviour
     {
         private Dictionary<Sides, T> diceSideValues;
         
         protected bool Idle;
 
-        protected Dice(Dictionary<Sides, T> diceSideValues)
+        protected DiceBehaviour(Dictionary<Sides, T> diceSideValues)
         {
             this.diceSideValues = diceSideValues;
         }

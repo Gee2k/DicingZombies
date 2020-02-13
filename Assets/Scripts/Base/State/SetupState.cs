@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Play;
-using Play.DicingZombies;
-using Play.DicingZombies.Assets.Dice;
-using Game.Assets.Player;
+using Modules.DicingZombies;
+using Base.Assets;
+using Modules.DicingZombies.Assets.Players;
 
-namespace Game.State
+namespace Base.State
 {
     public class SetupState : IGameState
     {

@@ -1,6 +1,4 @@
-using System;
-
-namespace Play.DicingZombies
+namespace Modules.DicingZombies.Assets.Dice
 {
     public class ZombieDiceSideValue : DiceSideValue
     {
