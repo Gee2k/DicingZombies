@@ -1,4 +1,5 @@
 ﻿using Base.State;
+using Modules.DicingZombies.Manager;
 using UnityEngine;
 
 namespace Modules.DicingZombies.State
@@ -7,10 +8,14 @@ namespace Modules.DicingZombies.State
     {
         private RollDiceState rollDiceState;
 
+        public SwitchPlayerState(PlayerManager playerManager) : base(playerManager)
+        {
+        }
+
         public IGameState update()
         {
-
             Debug.Log("[SwitchPlayerState] inside");
+            _playerManager.switchPlayer();
             return rollDiceState;
         }
 
