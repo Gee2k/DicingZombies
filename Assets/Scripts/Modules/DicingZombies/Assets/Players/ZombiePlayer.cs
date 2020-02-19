@@ -10,18 +10,34 @@ namespace Modules.DicingZombies.Assets.Players
         public bool isWinner = false;
         public bool hasFinishedRound = false;
         private int brainScoreAmount = 0;
-        public List<ZombieDice> dicePool; // TODO: proper handling through methods instead of public accessibility
-        public List<ZombieDice> diceResult; // TODO: proper handling through methods instead of public accessibility
+
+        private List<ZombieDice> _diceBrains;
+        private List<ZombieDice> _diceSteps;
+        private List<ZombieDice> _diceShotguns;
 
         public ZombiePlayer(string name) : base(name)
         {
 
         }
 
-        public void setDicePool(List<ZombieDice> dicePool)
+        public List<ZombieDice> diceBrains
         {
-            this.dicePool = dicePool;
+            get => _diceBrains;
+            set => _diceBrains = value;
         }
+        
+        public List<ZombieDice> diceSteps
+        {
+            get => _diceSteps;
+            set => _diceSteps = value;
+        }
+
+        public List<ZombieDice> diceShotguns
+        {
+            get => _diceShotguns;
+            set => _diceShotguns = value;
+        }
+
 
         public void addBrainScore(int amount)
         {

@@ -9,7 +9,7 @@ namespace Base
     {
         private String _ruleBookTitle;
         public abstract Player getRuleBookPlayer(Player player);
-        public abstract IGameState GetInitialPlayState();
+        public abstract IGameState SetupStateMachine();
 
         public string ruleBookTitle
         {

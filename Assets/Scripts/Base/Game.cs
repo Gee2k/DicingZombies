@@ -36,7 +36,7 @@ namespace Base
                     ruleBookPlayers.Add(_ruleBook.getRuleBookPlayer(player));
                 }
                 
-                return new Game(_ruleBook, ruleBookPlayers, _ruleBook.GetInitialPlayState());
+                return new Game(_ruleBook, ruleBookPlayers, _ruleBook.SetupStateMachine());
             }
         }
 

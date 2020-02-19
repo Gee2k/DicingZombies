@@ -21,6 +21,12 @@ namespace Modules.DicingZombies.State
         public IGameState update()
         {
             Debug.Log("[RollDiceState] inside");
+            
+            //if player has 3 hits or does not want to play
+            //// next()
+            //else
+            //// rollTheDIce!
+            
             return endTurnState;
         }
 
@@ -29,23 +35,9 @@ namespace Modules.DicingZombies.State
             this.endTurnState = gameState;
         }
 
-        public void setActivePlayer(ZombiePlayer player)
-        {
-            this.activePlayer = player;
-            player.diceResult = new List<ZombieDice>();
-        }
-
         public bool isPlayerDead()
         {
-            int hitCount = 0;
-            foreach(ZombieDice dice in activePlayer.diceResult)
-            {
-                if(ZombieDiceValueEnum.Hit.Equals(dice.GetDiceValue()))
-                {
-                    hitCount++;
-                }
-            }
-            return hitCount > MAX_HIT_COUNT;
+            return playerManager.activePlayer.diceShotguns.Count >= MAX_HIT_COUNT;
         }
 
         public List<ZombieDice> getDiceToRoll()

@@ -1,4 +1,4 @@
-public enum Sides
+public enum SidesEnum
 {
     Ceiling,
     Floor,
