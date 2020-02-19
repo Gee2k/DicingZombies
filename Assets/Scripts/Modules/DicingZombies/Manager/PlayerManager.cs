@@ -1,4 +1,4 @@
-﻿namespace Play.DicingZombies.Manager
+﻿namespace Modules.DicingZombies.Manager
 {
     public class PlayerManager
     {

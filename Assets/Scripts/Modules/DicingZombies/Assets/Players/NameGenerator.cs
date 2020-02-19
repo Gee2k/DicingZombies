@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Game.Assets.Player
+namespace Modules.DicingZombies.Assets.Players
 {
     public class ZombieNameGenerator
     {

@@ -1,11 +1,11 @@
-﻿using Game;
+﻿using Base;
 using System.Collections.Generic;
-using Game.Assets.Player;
-using Play.DicingZombies.Assets.Dice;
+using Base.Assets;
+using Modules.DicingZombies.Assets.Dice;
 
-namespace Play.DicingZombies.Assets.Player
+namespace Modules.DicingZombies.Assets.Players
 {
-    public class ZombiePlayer : Game.Assets.Player.Player
+    public class ZombiePlayer : Player
     {
         public bool isWinner = false;
         public bool hasFinishedRound = false;

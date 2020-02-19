@@ -1,4 +1,4 @@
-﻿namespace Game.Assets.Player
+﻿namespace Base.Assets
 {
     public class Player
     {

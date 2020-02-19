@@ -1,4 +1,4 @@
-﻿namespace Game.State
+﻿namespace Base.State
 {
     public interface IGameState
     {

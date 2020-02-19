@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Play.DicingZombies;
+﻿using Base;
+using Modules.DicingZombies;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour

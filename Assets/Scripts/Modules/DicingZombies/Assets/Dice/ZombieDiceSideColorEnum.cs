@@ -1,4 +1,4 @@
-﻿namespace Play.DicingZombies
+﻿namespace Modules.DicingZombies.Assets.Dice
 {
     public enum ZombieDiceSideColorEnum
     {

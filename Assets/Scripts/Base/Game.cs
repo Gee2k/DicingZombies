@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Game.State;
+using Base.State;
 using UnityEngine;
-using Game.Assets.Player;
+using Base.Assets;
 
-namespace Game
+namespace Base
 {
     public class Game
     {

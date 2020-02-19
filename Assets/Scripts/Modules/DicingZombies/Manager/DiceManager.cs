@@ -1,13 +1,13 @@
-﻿using Game.Assets.Dice;
-using Play.DicingZombies.Assets.Dice;
+﻿using Base.Assets.Dice;
+using Modules.DicingZombies.Assets.Dice;
 using System.Collections.Generic;
 
-namespace Play.DicingZombies.Manager
+namespace Modules.DicingZombies.Manager
 {
 
     public class DiceManager
     {
-        public List<Dice<ZombieDice>> throwDice(List<Dice<ZombieDice>> dice){
+        public List<DiceBehaviour<ZombieDice>> throwDice(List<DiceBehaviour<ZombieDice>> dice){
             return null;
         }
     }

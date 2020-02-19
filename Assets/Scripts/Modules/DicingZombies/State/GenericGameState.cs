@@ -1,6 +1,6 @@
-using Play.DicingZombies.Manager;
+using Modules.DicingZombies.Manager;
 
-namespace Play.DicingZombies.State
+namespace Modules.DicingZombies.State
 {
      public class GenericGameState
     {

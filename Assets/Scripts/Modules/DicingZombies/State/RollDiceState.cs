@@ -1,11 +1,10 @@
-﻿using Game.State;
-using Play.DicingZombies;
-using Play.DicingZombies.Assets.Player;
-using Play.DicingZombies.Assets.Dice;
+﻿using Base.State;
+using Modules.DicingZombies.Assets.Players;
+using Modules.DicingZombies.Assets.Dice;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Play.DicingZombies.State
+namespace Modules.DicingZombies.State
 {
     public class RollDiceState : GenericGameState, IGameState
     {

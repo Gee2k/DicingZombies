@@ -1,11 +1,11 @@
-using Game;
-using Game.State;
-using Game.Assets.Player;
-using Play.DicingZombies.Assets.Player;
-using Play.DicingZombies.State;
+using Base;
+using Base.State;
+using Base.Assets;
+using Modules.DicingZombies.Assets.Players;
+using Modules.DicingZombies.State;
 using UnityEngine;
 
-namespace Play.DicingZombies
+namespace Modules.DicingZombies
 {
     public class DicingZombiesRuleBook : RuleBook
     {
@@ -16,7 +16,7 @@ namespace Play.DicingZombies
         public DicingZombiesRuleBook()
         {
             ruleBookTitle = "DicingZombies";
-            //find Models for Dice and attach
+            //find Models for DiceBehaviour and attach
             // List<GameObject> gameObjects = (Resources.FindObjectsOfTypeAll(typeof(GameObject))).OfType<GameObject>().ToList();
             
             GreenDice = Resources.Load("greenDiceGameObject") as GameObject;
