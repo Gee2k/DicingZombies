@@ -7,6 +7,8 @@ using Modules.DicingZombies.Assets.Players;
 using Modules.DicingZombies.Manager;
 using Modules.DicingZombies.State;
 using UnityEngine;
+using System.Collections.Generic;
+using Modules.DicingZombies.Manager;
 
 namespace Modules.DicingZombies
 {
@@ -60,7 +62,7 @@ namespace Modules.DicingZombies
         public override IGameState SetupStateMachine()
         {
             DiceManager diceManager = new DiceManager();
-            PlayerManager playerManager = new PlayerManager();
+            PlayerManager playerManager = createPlayerManagerForDemo();
             
             EndTurnState endTurnState = new EndTurnState();
             SwitchPlayerState switchPlayerState = new SwitchPlayerState();
@@ -80,6 +82,19 @@ namespace Modules.DicingZombies
             rollDiceState.setEndTurnState(endTurnState);
 
             return switchPlayerState;
+        }
+
+        private PlayerManager createPlayerManagerForDemo()
+        {
+            List<ZombiePlayer> players = new List<ZombiePlayer>();
+            ZombiePlayer newPlayer;
+            newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
+            players.Add(newPlayer);
+            newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
+            players.Add(newPlayer);
+            newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
+            players.Add(newPlayer);
+            return new PlayerManager(players);
         }
     }
 }

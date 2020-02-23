@@ -48,5 +48,10 @@ namespace Modules.DicingZombies.Assets.Players
         {
             return this.brainScoreAmount;
         }
+
+        public bool isWinner()
+        {
+            return brainScoreAmount >= 10;
+        }
     }
 }

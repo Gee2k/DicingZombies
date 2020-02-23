@@ -3,6 +3,7 @@ using Modules.DicingZombies.Assets.Players;
 using Modules.DicingZombies.Assets.Dice;
 using System.Collections.Generic;
 using UnityEngine;
+using Modules.DicingZombies.Manager;
 
 namespace Modules.DicingZombies.State
 {
@@ -27,72 +28,45 @@ namespace Modules.DicingZombies.State
             //else
             //// rollTheDIce!
             
-            return endTurnState;
+            //return endTurnState;
+            _diceManager.rollTheDice();
+            if(_diceManager.isTurnLost())
+            {
+                Debug.Log(_playerManager.getCurrentPlayer().name + " got shot and lost the turn");
+                return endTurnState;
+            }
+            else
+            {
+                saveScore();
+                Debug.Log(_playerManager.getCurrentPlayer().name + " has now " +_playerManager.getCurrentPlayer().getBrainScore() + " brains");
+                if (playerSkipsTurn())
+                {
+                    return endTurnState;
+                }
+            }
+            Debug.Log(_playerManager.getCurrentPlayer().name + " skips her turn");
+            return this;
         }
 
         public void setEndTurnState(EndTurnState gameState)
         {
             this.endTurnState = gameState;
         }
-
+        
         public bool isPlayerDead()
         {
             return playerManager.activePlayer.diceShotguns.Count >= MAX_HIT_COUNT;
         }
-
-        public List<ZombieDice> getDiceToRoll()
+        
+        private bool playerSkipsTurn()
         {
-            restockPool();
-
-            /*
-            int newDiceAmount = DiceAmountPerRoll - presetDice.Count;
-            if (newDiceAmount <= unusedDice.Count)
-            {
-                newDiceAmount = unusedDice.Count; //TODO: use brain dice from score area if no unused dice are left
-            }
-
-            for (int i = 0; i < newDiceAmount; i++)
-            {
-                int randomIndex = Random.Range(0, unusedDice.Count);
-                presetDice.Add(unusedDice[randomIndex]);
-                unusedDice.RemoveAt(randomIndex);
-            }
-            return presetDice;
-            */
-            throw new System.NotImplementedException();
+            System.Random rnd = new System.Random();
+            return rnd.Next(2) == 0; // quick boolean random for 50/50 
         }
 
-        private void restockPool()
+        private void saveScore()
         {
-            restockFromEscapes();
-            restockFromBrains();
-        }
-
-        private void restockFromEscapes()
-        {
-            foreach (ZombieDice dice in activePlayer.diceResult)
-            {
-                if (ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()))
-                {
-                    activePlayer.dicePool.Add(dice);
-                }
-            }
-            activePlayer.diceResult.RemoveAll(dice => ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()));
-        }
-
-        private void restockFromBrains()
-        {
-            if (activePlayer.dicePool.Count <= DICE_ROLL_AMOUNT)
-            {
-                foreach (ZombieDice dice in activePlayer.diceResult)
-                {
-                    if (ZombieDiceValueEnum.Brain.Equals(dice.GetDiceValue()))
-                    {
-                        activePlayer.dicePool.Add(dice);
-                    }
-
-                }
-            }
+            _playerManager.getCurrentPlayer().addBrainScore(_diceManager.getScore());
         }
     }
 }
