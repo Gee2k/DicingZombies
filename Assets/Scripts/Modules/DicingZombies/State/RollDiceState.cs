@@ -17,20 +17,26 @@ namespace Modules.DicingZombies.State
         public IGameState update()
         {
             Debug.Log("[RollDiceState] inside");
-            
+
+            //// rollTheDIce!
+            diceManager.rollTheDice(activePlayer);
+
+
             //if player has 3 hits or does not want to play
-            if (isPlayerDead() || playerSkipsTurn())
+            if (isPlayerDead())
             {
                 return endTurnState;
             }
-            else
+            
+            //play did not lose, so save the points
+            saveScore();
+            Debug.Log(playerManager.getCurrentPlayer().name + " has now " + playerManager.getCurrentPlayer().getBrainScore() + " brains");
+            
+            if (playerSkipsTurn())
             {
-                //// rollTheDIce!
-                diceManager.rollTheDice(activePlayer);
-                saveScore();
-                Debug.Log(playerManager.getCurrentPlayer().name + " has now " + playerManager.getCurrentPlayer().getBrainScore() + " brains");
-                return this;
+                return endTurnState;
             }
+            return this;
         }
 
         public void setEndTurnState(EndTurnState gameState)
