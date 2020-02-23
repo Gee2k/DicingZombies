@@ -4,6 +4,8 @@ using Base.Assets;
 using Modules.DicingZombies.Assets.Players;
 using Modules.DicingZombies.State;
 using UnityEngine;
+using System.Collections.Generic;
+using Modules.DicingZombies.Manager;
 
 namespace Modules.DicingZombies
 {
@@ -33,15 +35,29 @@ namespace Modules.DicingZombies
 
         public override IGameState GetInitialPlayState()
         {
-            EndTurnState endTurnState = new EndTurnState();
-            SwitchPlayerState switchPlayerState = new SwitchPlayerState();
-            RollDiceState rollDiceState = new RollDiceState();
+            PlayerManager playerManager = createPlayerManagerForDemo();
+            EndTurnState endTurnState = new EndTurnState(playerManager);
+            SwitchPlayerState switchPlayerState = new SwitchPlayerState(playerManager);
+            RollDiceState rollDiceState = new RollDiceState(playerManager);
 
             endTurnState.setSwitchPlayerState(switchPlayerState);
             switchPlayerState.setRollDiceState(rollDiceState);
             rollDiceState.setEndTurnState(endTurnState);
 
             return switchPlayerState;
+        }
+
+        private PlayerManager createPlayerManagerForDemo()
+        {
+            List<ZombiePlayer> players = new List<ZombiePlayer>();
+            ZombiePlayer newPlayer;
+            newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
+            players.Add(newPlayer);
+            newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
+            players.Add(newPlayer);
+            newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
+            players.Add(newPlayer);
+            return new PlayerManager(players);
         }
     }
 }

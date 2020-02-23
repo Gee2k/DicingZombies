@@ -4,7 +4,11 @@ namespace Modules.DicingZombies.State
 {
      public class GenericGameState
     {
-        private PlayerManager _playerManager;
-        private DiceManager _diceManager;
-    }
+        protected PlayerManager _playerManager;
+
+        public GenericGameState(PlayerManager playerManager) 
+        {
+            this._playerManager = playerManager;
+        }
+}
 }

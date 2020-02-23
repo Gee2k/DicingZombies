@@ -1,4 +1,5 @@
 ﻿using Base.State;
+using Modules.DicingZombies.Manager;
 using UnityEngine;
 
 namespace Modules.DicingZombies.State
@@ -7,16 +8,28 @@ namespace Modules.DicingZombies.State
     {
         private SwitchPlayerState switchPlayerState;
 
+        public EndTurnState(PlayerManager playerManager) : base(playerManager)
+        {
+        }
+
         public IGameState update()
         {
             Debug.Log("[EndTurnState] inside");
-            // return switchPlayerState;
-            return null;    //testing end of game
+            if(isGameOver())
+            {
+                return null;
+            }
+            return switchPlayerState;
         }
 
         public void setSwitchPlayerState(SwitchPlayerState gameState)
         {
             this.switchPlayerState = gameState;
+        }
+
+        private bool isGameOver()
+        {
+            return _playerManager.getCurrentPlayer().isWinner();
         }
     }
 }

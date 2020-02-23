@@ -15,11 +15,6 @@ namespace Base.State
         public SetupState()
         {
             //for test purpose create Game here
-            ZombieNameGenerator generator = new ZombieNameGenerator();
-            Player player = new Player(generator.getRandomZombieName());
-            _players.Add(player);
-            Debug.Log("[SetupState] Player " + player.name + " created.");
-
             RuleBook dicingZombiesRuleBook = new DicingZombiesRuleBook();
             _game = new Game.Builder().withPlayers(_players).usingGameRules(dicingZombiesRuleBook).build();
         }
