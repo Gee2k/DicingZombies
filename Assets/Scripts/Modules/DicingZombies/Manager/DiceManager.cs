@@ -11,6 +11,8 @@ namespace Modules.DicingZombies.Manager
 
     public class DiceManager
     {
+        Random rnd = new Random();
+
         private const int MAX_HIT_COUNT = 3;
         private const int DICE_ROLL_AMOUNT = 3;
         
@@ -87,8 +89,6 @@ namespace Modules.DicingZombies.Manager
                 //restock player brains
                 RestockBrains();
             }
-            Random rnd = new Random(); //demo
-
             return _dicePool[rnd.Next(0, _dicePool.Count - 1)];
             // return _dicePool[Random.Range(0, _dicePool.Count - 1)];
         }
@@ -118,7 +118,6 @@ namespace Modules.DicingZombies.Manager
                     hitCount++;
                 }
             }
-            Random rnd = new Random(); //demo
             hitCount =  rnd.Next(4); 
             // hitCount =  Random.Range(0, 4);
             return hitCount;
@@ -134,7 +133,6 @@ namespace Modules.DicingZombies.Manager
                     brainScore++;
                 }
             }
-            Random rnd = new Random(); //demo
             brainScore = rnd.Next(1,3);
             // brainScore = Random.Range(1, 3);
             return brainScore;

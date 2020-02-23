@@ -55,7 +55,7 @@ namespace Modules.DicingZombies
         }
 
         /**
-         * helper method to convert a baseplayer into an zombiePlayer
+         * helper method to convert a baseplayer into a zombiePlayer
          */
         public override Player getRuleBookPlayer(Player player)
         {
