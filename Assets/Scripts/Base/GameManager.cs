@@ -35,7 +35,7 @@ namespace Base
             {
                 Console.WriteLine("[GameManager] create new Game of type " + ruleBook.ruleBookTitle);
 
-                SetupState setupState = new SetupState();    //todo pass RuleBook to setup which is chosen in the menu by the player
+                SetupState setupState = new SetupState(ruleBook);    //todo pass RuleBook to setup which is chosen in the menu by the player
                 PlayState playState = new PlayState();
                 EndState endState = new EndState();
 

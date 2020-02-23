@@ -8,6 +8,7 @@ using Modules.DicingZombies.Manager;
 using Modules.DicingZombies.State;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using Modules.DicingZombies.Manager;
 
 namespace Modules.DicingZombies
@@ -25,6 +26,13 @@ namespace Modules.DicingZombies
         readonly List<ZombieDice> _zombieDices = new List<ZombieDice>();
         
         private List<GenericGameState> _gameStates = new List<GenericGameState>();
+        
+        //
+        // Rule specific stuff
+        //
+
+        private static int MAX_HIT_COUNT = 3;
+        
         public DicingZombiesRuleBook()
         {
             ruleBookTitle = "DicingZombies";
@@ -70,7 +78,9 @@ namespace Modules.DicingZombies
         {
             DiceManager diceManager = new DiceManager();
             PlayerManager playerManager = createPlayerManagerForDemo();
-            
+            MenuManager menuManager = new MenuManager();
+            menuManager.diceMenu = holder["DiceMenu"];
+
             EndTurnState endTurnState = new EndTurnState();
             SwitchPlayerState switchPlayerState = new SwitchPlayerState();
             RollDiceState rollDiceState = new RollDiceState();
@@ -82,6 +92,8 @@ namespace Modules.DicingZombies
             {
                 gameState.diceManager = diceManager;
                 gameState.playerManager = playerManager;
+                gameState.menuManager = menuManager;
+                gameState.ruleBook = this;
             }
 
             endTurnState.setSwitchPlayerState(switchPlayerState);
@@ -106,6 +118,20 @@ namespace Modules.DicingZombies
             newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
             players.Add(newPlayer);
             return new PlayerManager(players);
+        }
+        
+        //
+        // Rule specific stuff
+        //
+        
+        public bool isPlayerDead(ZombiePlayer player)
+        {
+            if (player.diceShotguns.Count >= MAX_HIT_COUNT)
+            {
+                Debug.Log(player.name + " got shot and lost the turn");
+                return true;
+            }
+            return false;
         }
     }
 }

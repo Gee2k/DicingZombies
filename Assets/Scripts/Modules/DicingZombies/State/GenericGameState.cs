@@ -6,6 +6,8 @@ namespace Modules.DicingZombies.State
     {
         private PlayerManager _playerManager;
         private DiceManager _diceManager;
+        private MenuManager _menuManager;
+        private DicingZombiesRuleBook _ruleBook;
 
         public PlayerManager playerManager
         {
@@ -17,6 +19,18 @@ namespace Modules.DicingZombies.State
         {
             get => _diceManager;
             set => _diceManager = value;
+        }
+
+        public MenuManager menuManager
+        {
+            get => _menuManager;
+            set => _menuManager = value;
+        }
+
+        public DicingZombiesRuleBook ruleBook
+        {
+            get => _ruleBook;
+            set => _ruleBook = value;
         }
     }
 }

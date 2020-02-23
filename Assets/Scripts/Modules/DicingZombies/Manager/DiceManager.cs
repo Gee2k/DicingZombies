@@ -27,6 +27,7 @@ namespace Modules.DicingZombies.Manager
         private ZombiePlayer _player;
         
         private DiceEmitter<ZombieDice> _emitter;
+        private MenuManager _menuManager = new MenuManager();
 
         private bool diceRollFinished = false;
         private bool diceRollStarted = false;
@@ -190,6 +191,11 @@ namespace Modules.DicingZombies.Manager
                     }
                 }
             }
+        }
+
+        public bool diceThrowFinished()
+        {
+            throw new NotImplementedException();
         }
     }
 }

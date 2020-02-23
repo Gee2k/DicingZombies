@@ -8,7 +8,7 @@ namespace Base.State
 
         public IGameState update()
         {
-            Debug.Log("[EndState] inside");
+            Debug.Log("[BASE-EndState] inside");
             //game end
 
             return null;

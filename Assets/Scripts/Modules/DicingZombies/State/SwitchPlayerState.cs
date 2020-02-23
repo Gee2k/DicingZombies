@@ -10,7 +10,7 @@ namespace Modules.DicingZombies.State
 
         public IGameState update()
         {
-            Debug.Log("[SwitchPlayerState] inside");
+            Debug.Log("[PLAY-SwitchPlayerState] inside");
             playerManager.switchPlayer();
             return rollDiceState;
         }
