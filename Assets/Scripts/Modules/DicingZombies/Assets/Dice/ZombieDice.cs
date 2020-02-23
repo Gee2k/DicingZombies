@@ -9,18 +9,18 @@ namespace Modules.DicingZombies.Assets.Dice
         private Dictionary<DiceSidesNameEnum, ZombieDiceSideValue> diceSideValues = new Dictionary<DiceSidesNameEnum, ZombieDiceSideValue>();
         private GameObject _representation;
         private ZombieDiceSideValue _diceSideValue;
-        public ZombieDice(ZombieDiceSideColorEnum color, GameObject representation)
+        public ZombieDice(ZombieDiceColorEnum color, GameObject representation)
         {
             switch (color)
             {
-                case ZombieDiceSideColorEnum.Green:
-                    createGreenDice();
+                case ZombieDiceColorEnum.Green:
+                    CreateGreenDice();
                     break;
-                case ZombieDiceSideColorEnum.Yellow:
-                    createYellowDice();
+                case ZombieDiceColorEnum.Yellow:
+                    CreateYellowDice();
                     break;
-                case ZombieDiceSideColorEnum.Red:
-                    createRedDice();
+                case ZombieDiceColorEnum.Red:
+                    CreateRedDice();
                     break;
             }
 
@@ -28,52 +28,52 @@ namespace Modules.DicingZombies.Assets.Dice
             _representation = representation;
         }
 
-        private void createGreenDice()
+        private void CreateGreenDice()
         {
             diceSideValues.Add(DiceSidesNameEnum.Ceiling,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Green, ZombieDiceValueEnum.Hit));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Green, ZombieDiceValueEnum.Hit));
             diceSideValues.Add(DiceSidesNameEnum.East,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Green, ZombieDiceValueEnum.Escape));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Green, ZombieDiceValueEnum.Escape));
             diceSideValues.Add(DiceSidesNameEnum.West,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Green, ZombieDiceValueEnum.Escape));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Green, ZombieDiceValueEnum.Escape));
             diceSideValues.Add(DiceSidesNameEnum.North,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Green, ZombieDiceValueEnum.Brain));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Green, ZombieDiceValueEnum.Brain));
             diceSideValues.Add(DiceSidesNameEnum.South,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Green, ZombieDiceValueEnum.Brain));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Green, ZombieDiceValueEnum.Brain));
             diceSideValues.Add(DiceSidesNameEnum.Floor,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Green, ZombieDiceValueEnum.Brain));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Green, ZombieDiceValueEnum.Brain));
         }
 
-        private void createYellowDice()
+        private void CreateYellowDice()
         {
             diceSideValues.Add(DiceSidesNameEnum.Ceiling,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Yellow, ZombieDiceValueEnum.Hit));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Yellow, ZombieDiceValueEnum.Hit));
             diceSideValues.Add(DiceSidesNameEnum.East,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Yellow, ZombieDiceValueEnum.Escape));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Yellow, ZombieDiceValueEnum.Escape));
             diceSideValues.Add(DiceSidesNameEnum.West,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Yellow, ZombieDiceValueEnum.Escape));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Yellow, ZombieDiceValueEnum.Escape));
             diceSideValues.Add(DiceSidesNameEnum.North,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Yellow, ZombieDiceValueEnum.Brain));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Yellow, ZombieDiceValueEnum.Brain));
             diceSideValues.Add(DiceSidesNameEnum.South,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Yellow, ZombieDiceValueEnum.Brain));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Yellow, ZombieDiceValueEnum.Brain));
             diceSideValues.Add(DiceSidesNameEnum.Floor,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Yellow, ZombieDiceValueEnum.Hit));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Yellow, ZombieDiceValueEnum.Hit));
         }
 
-        private void createRedDice()
+        private void CreateRedDice()
         {
             diceSideValues.Add(DiceSidesNameEnum.Ceiling,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Red, ZombieDiceValueEnum.Brain));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Red, ZombieDiceValueEnum.Brain));
             diceSideValues.Add(DiceSidesNameEnum.East,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Red, ZombieDiceValueEnum.Hit));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Red, ZombieDiceValueEnum.Hit));
             diceSideValues.Add(DiceSidesNameEnum.West,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Red, ZombieDiceValueEnum.Hit));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Red, ZombieDiceValueEnum.Hit));
             diceSideValues.Add(DiceSidesNameEnum.North,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Red, ZombieDiceValueEnum.Escape));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Red, ZombieDiceValueEnum.Escape));
             diceSideValues.Add(DiceSidesNameEnum.South,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Red, ZombieDiceValueEnum.Escape));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Red, ZombieDiceValueEnum.Escape));
             diceSideValues.Add(DiceSidesNameEnum.Floor,
-                new ZombieDiceSideValue(ZombieDiceSideColorEnum.Red, ZombieDiceValueEnum.Hit));
+                new ZombieDiceSideValue(ZombieDiceColorEnum.Red, ZombieDiceValueEnum.Hit));
         }
 
         public void SetDiceThrowResult(DiceSidesNameEnum diceSidesNameEnum)

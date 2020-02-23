@@ -7,6 +7,17 @@ namespace Base
 {
     public class Game
     {
+        private RuleBook _ruleBook;
+        private List<Player> _players;
+        private IGameState _state;
+        
+        private Game(RuleBook ruleBook, List<Player> players, IGameState initialPlayLoopState)
+        {
+            _ruleBook = ruleBook;
+            _players = players;
+            _state = initialPlayLoopState;
+        }
+        
         public class Builder
         {
             private RuleBook _ruleBook;
@@ -40,17 +51,6 @@ namespace Base
             }
         }
 
-        private RuleBook _ruleBook;
-        private List<Player> _players;
-        private IGameState _state;
-
-        private Game(RuleBook ruleBook, List<Player> players, IGameState initialPlayLoopState)
-        {
-            _ruleBook = ruleBook;
-            _players = players;
-            _state = initialPlayLoopState;
-        }
-        
         public Game checkGameState()
         {
             if (_state != null)

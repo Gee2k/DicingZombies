@@ -2,16 +2,16 @@ namespace Modules.DicingZombies.Assets.Dice
 {
     public class ZombieDiceSideValue : DiceSideValue
     {
-        private ZombieDiceSideColorEnum _color;
+        private ZombieDiceColorEnum _color;
         private ZombieDiceValueEnum _zombieDiceValueEnum;
 
-        public ZombieDiceSideValue(ZombieDiceSideColorEnum color, ZombieDiceValueEnum value) : base()
+        public ZombieDiceSideValue(ZombieDiceColorEnum color, ZombieDiceValueEnum value) : base()
         {
             this._color = color;
             this._zombieDiceValueEnum = value;
         }
 
-        public ZombieDiceSideColorEnum getColor()
+        public ZombieDiceColorEnum getColor()
         {
             return this._color;
         }

@@ -40,25 +40,32 @@ namespace Modules.DicingZombies
             //create dices
             for (int i = 0; i < amountGreenDice; i++)
             {
-                _zombieDices.Add(new ZombieDice(ZombieDiceSideColorEnum.Green, greenDiceGameObject));
+                _zombieDices.Add(new ZombieDice(ZombieDiceColorEnum.Green, greenDiceGameObject));
             }
             //create dices
             for (int i = 0; i < amountYellowDice; i++)
             {
-                _zombieDices.Add(new ZombieDice(ZombieDiceSideColorEnum.Yellow, yellowDiceGameObject));
+                _zombieDices.Add(new ZombieDice(ZombieDiceColorEnum.Yellow, yellowDiceGameObject));
             }
             //create dices
             for (int i = 0; i < amountRedDice; i++)
             {
-                _zombieDices.Add(new ZombieDice(ZombieDiceSideColorEnum.Red, redDiceGameObject));
+                _zombieDices.Add(new ZombieDice(ZombieDiceColorEnum.Red, redDiceGameObject));
             }
         }
 
+        /**
+         * helper method to convert a baseplayer into an zombiePlayer
+         */
         public override Player getRuleBookPlayer(Player player)
         {
             return new ZombiePlayer(player.name);
         }
 
+        /**
+         * creates initial gameloop for DicingZombies
+         * adds all necessary states and managers
+         */
         public override IGameState SetupStateMachine()
         {
             DiceManager diceManager = new DiceManager();
@@ -84,6 +91,10 @@ namespace Modules.DicingZombies
             return switchPlayerState;
         }
 
+        /**
+         * demo gamemanager to mimic player behaviour
+         * ## mock ##
+         */
         private PlayerManager createPlayerManagerForDemo()
         {
             List<ZombiePlayer> players = new List<ZombiePlayer>();
