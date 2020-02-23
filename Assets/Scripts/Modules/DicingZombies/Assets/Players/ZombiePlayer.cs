@@ -7,13 +7,12 @@ namespace Modules.DicingZombies.Assets.Players
 {
     public class ZombiePlayer : Player
     {
-        public bool isWinner = false;
         public bool hasFinishedRound = false;
         private int brainScoreAmount = 0;
 
-        private List<ZombieDice> _diceBrains;
-        private List<ZombieDice> _diceSteps;
-        private List<ZombieDice> _diceShotguns;
+        private List<ZombieDice> _diceBrains = new List<ZombieDice>();
+        private List<ZombieDice> _diceSteps = new List<ZombieDice>();
+        private List<ZombieDice> _diceShotguns = new List<ZombieDice>();
 
         public ZombiePlayer(string name) : base(name)
         {

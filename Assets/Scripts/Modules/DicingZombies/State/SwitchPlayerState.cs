@@ -8,14 +8,10 @@ namespace Modules.DicingZombies.State
     {
         private RollDiceState rollDiceState;
 
-        public SwitchPlayerState(PlayerManager playerManager) : base(playerManager)
-        {
-        }
-
         public IGameState update()
         {
             Debug.Log("[SwitchPlayerState] inside");
-            _playerManager.switchPlayer();
+            playerManager.switchPlayer();
             return rollDiceState;
         }
 

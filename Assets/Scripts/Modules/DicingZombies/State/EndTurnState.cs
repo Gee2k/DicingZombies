@@ -7,11 +7,7 @@ namespace Modules.DicingZombies.State
     public class EndTurnState : GenericGameState, IGameState
     {
         private SwitchPlayerState switchPlayerState;
-
-        public EndTurnState(PlayerManager playerManager) : base(playerManager)
-        {
-        }
-
+        
         public IGameState update()
         {
             Debug.Log("[EndTurnState] inside");
@@ -29,7 +25,7 @@ namespace Modules.DicingZombies.State
 
         private bool isGameOver()
         {
-            return _playerManager.getCurrentPlayer().isWinner();
+            return playerManager.getCurrentPlayer().isWinner();
         }
     }
 }

@@ -14,38 +14,23 @@ namespace Modules.DicingZombies.State
         private const int MAX_HIT_COUNT = 3;
         private const int DICE_ROLL_AMOUNT = 3;
 
-        public RollDiceState()
-        {
-
-        }
-
         public IGameState update()
         {
             Debug.Log("[RollDiceState] inside");
             
             //if player has 3 hits or does not want to play
-            //// next()
-            //else
-            //// rollTheDIce!
-            
-            //return endTurnState;
-            _diceManager.rollTheDice();
-            if(_diceManager.isTurnLost())
+            if (isPlayerDead() || playerSkipsTurn())
             {
-                Debug.Log(_playerManager.getCurrentPlayer().name + " got shot and lost the turn");
                 return endTurnState;
             }
             else
             {
+                //// rollTheDIce!
+                diceManager.rollTheDice(activePlayer);
                 saveScore();
-                Debug.Log(_playerManager.getCurrentPlayer().name + " has now " +_playerManager.getCurrentPlayer().getBrainScore() + " brains");
-                if (playerSkipsTurn())
-                {
-                    return endTurnState;
-                }
+                Debug.Log(playerManager.getCurrentPlayer().name + " has now " + playerManager.getCurrentPlayer().getBrainScore() + " brains");
+                return this;
             }
-            Debug.Log(_playerManager.getCurrentPlayer().name + " skips her turn");
-            return this;
         }
 
         public void setEndTurnState(EndTurnState gameState)
@@ -55,18 +40,27 @@ namespace Modules.DicingZombies.State
         
         public bool isPlayerDead()
         {
-            return playerManager.activePlayer.diceShotguns.Count >= MAX_HIT_COUNT;
+            Debug.Log(playerManager.getCurrentPlayer().name + " got shot and lost the turn");
+            // return playerManager.activePlayer.diceShotguns.Count >= MAX_HIT_COUNT;
+            return playerManager.getCurrentPlayer().diceShotguns.Count >= MAX_HIT_COUNT;
         }
         
         private bool playerSkipsTurn()
         {
-            System.Random rnd = new System.Random();
-            return rnd.Next(2) == 0; // quick boolean random for 50/50 
+            bool isSkipping = Random.Range(0, 1) == 0;
+            // System.Random rnd = new System.Random();
+            // return rnd.Next(2) == 0; // quick boolean random for 50/50
+            if (isSkipping)
+            {
+                Debug.Log(playerManager.getCurrentPlayer().name + " skips her turn");
+            }
+
+            return isSkipping;
         }
 
         private void saveScore()
         {
-            _playerManager.getCurrentPlayer().addBrainScore(_diceManager.getScore());
+            playerManager.getCurrentPlayer().addBrainScore(diceManager.getScore());
         }
     }
 }

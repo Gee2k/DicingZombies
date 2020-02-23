@@ -29,9 +29,9 @@ namespace Base.Assets.Dice
             return hit.transform.tag == "game_ceiling";
         }
         
-        public SidesEnum GetDiceValue()
+        public DiceSidesNameEnum GetDiceValue()
         {
-            SidesEnum currentSideEnum = SidesEnum.Unknown;
+            DiceSidesNameEnum currentSideEnum = DiceSidesNameEnum.Unknown;
             
             if (!IsIdle())
             {
@@ -40,27 +40,27 @@ namespace Base.Assets.Dice
 
             if (IsSideFacingUp(transform.up))
             {
-                currentSideEnum = SidesEnum.Ceiling;
+                currentSideEnum = DiceSidesNameEnum.Ceiling;
             }
             else if (IsSideFacingUp(-transform.up))
             {
-                currentSideEnum = SidesEnum.Floor;
+                currentSideEnum = DiceSidesNameEnum.Floor;
             }
             else if (IsSideFacingUp(transform.forward))
             {
-                currentSideEnum = SidesEnum.North;
+                currentSideEnum = DiceSidesNameEnum.North;
             }
             else if (IsSideFacingUp(-transform.forward))
             {
-                currentSideEnum = SidesEnum.South;
+                currentSideEnum = DiceSidesNameEnum.South;
             }
             else if (IsSideFacingUp(transform.right))
             {
-                currentSideEnum = SidesEnum.East;
+                currentSideEnum = DiceSidesNameEnum.East;
             }
             else if (IsSideFacingUp(-transform.right))
             {
-                currentSideEnum = SidesEnum.West;
+                currentSideEnum = DiceSidesNameEnum.West;
             }
             return currentSideEnum;
         }

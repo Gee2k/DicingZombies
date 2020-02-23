@@ -1,4 +1,4 @@
-public enum SidesEnum
+public enum DiceSidesNameEnum
 {
     Ceiling,
     Floor,

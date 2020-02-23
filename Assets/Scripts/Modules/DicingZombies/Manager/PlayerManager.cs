@@ -1,3 +1,4 @@
+using System;
 using Modules.DicingZombies.Assets.Players;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,9 @@ namespace Modules.DicingZombies.Manager
 {
     public class PlayerManager
     {
+        private static int currentIndex;
         private List<ZombiePlayer> _players = new List<ZombiePlayer>();
         private ZombiePlayer _activePlayer;
-        private int currentIndex;
 
         public PlayerManager(List<ZombiePlayer> players)
         {
@@ -37,11 +38,14 @@ namespace Modules.DicingZombies.Manager
 
         public ZombiePlayer switchPlayer()
         {
-            currentIndex++;
-            if(currentIndex >= players.Count)
-            {
-                currentIndex = 0;
-            }
+            Math.DivRem(++currentIndex, players.Count, out currentIndex);
+            _activePlayer = players[currentIndex];
+            
+            // currentIndex++;
+            // if(currentIndex >= players.Count)
+            // {
+            //     currentIndex = 0;
+            // }
             Debug.Log("Switching to Player " + getCurrentPlayer().name);
             return getCurrentPlayer();
         }
