@@ -4,23 +4,22 @@ using UnityEngine;
 
 namespace Base.Assets.Dice
 {
-    public abstract class DiceBehaviour<T> : MonoBehaviour
+    public class Diceable : MonoBehaviour
     {
-        private Dictionary<Sides, T> diceSideValues;
-        
-        protected bool Idle;
+        private bool _idle;
+        private int _sideAmount;
 
-        protected DiceBehaviour(Dictionary<Sides, T> diceSideValues)
+        public Diceable(int sideAmount)
         {
-            this.diceSideValues = diceSideValues;
+            _sideAmount = sideAmount;
         }
 
         /*
         * return idle value;
         */
-        protected bool IsIdle()
+        public bool IsIdle()
         {
-            return Idle;
+            return _idle;
         }
         
         private bool IsSideFacingUp ( Vector3 direction)
@@ -30,40 +29,40 @@ namespace Base.Assets.Dice
             return hit.transform.tag == "game_ceiling";
         }
         
-        public T GetDiceValue()
+        public DiceSidesNameEnum GetDiceValue()
         {
-            Sides currentSide = Sides.Unknown;
+            DiceSidesNameEnum currentSideEnum = DiceSidesNameEnum.Unknown;
             
-            if (!Idle)
+            if (!IsIdle())
             {
                 throw new Exception("Dice not ready");
             }
 
             if (IsSideFacingUp(transform.up))
             {
-                currentSide = Sides.Ceiling;
+                currentSideEnum = DiceSidesNameEnum.Ceiling;
             }
             else if (IsSideFacingUp(-transform.up))
             {
-                currentSide = Sides.Floor;
+                currentSideEnum = DiceSidesNameEnum.Floor;
             }
             else if (IsSideFacingUp(transform.forward))
             {
-                currentSide = Sides.North;
+                currentSideEnum = DiceSidesNameEnum.North;
             }
             else if (IsSideFacingUp(-transform.forward))
             {
-                currentSide = Sides.South;
+                currentSideEnum = DiceSidesNameEnum.South;
             }
             else if (IsSideFacingUp(transform.right))
             {
-                currentSide = Sides.East;
+                currentSideEnum = DiceSidesNameEnum.East;
             }
             else if (IsSideFacingUp(-transform.right))
             {
-                currentSide = Sides.West;
+                currentSideEnum = DiceSidesNameEnum.West;
             }
-            return diceSideValues[currentSide];
+            return currentSideEnum;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Modules.DicingZombies.Assets.Dice
 {
-    public enum ZombieDiceSideColorEnum
+    public enum ZombieDiceColorEnum
     {
         Green,
         Yellow,

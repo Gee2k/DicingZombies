@@ -2,33 +2,107 @@
 using Modules.DicingZombies.Assets.Dice;
 using System;
 using System.Collections.Generic;
+using Base;
+using Modules.DicingZombies.Assets.Players;
+// using Random = UnityEngine.Random;
 
 namespace Modules.DicingZombies.Manager
 {
 
     public class DiceManager
     {
+        Random rnd = new Random();
+
         private const int MAX_HIT_COUNT = 3;
         private const int DICE_ROLL_AMOUNT = 3;
+        
+        //test stuff
+        private int totalDice = 3;
+        //end teststuff
 
-        public List<ZombieDice> dicePool; // TODO: proper handling through methods instead of public accessibility
-        public List<ZombieDice> diceResult; // TODO: proper handling through methods instead of public accessibility
+        private int _brainsScore;
+        private List<ZombieDice> _dicePool = new List<ZombieDice>();
+        private List<ZombieDice> _rollingDiceList = new List<ZombieDice>();
+        private List<ZombieDice> diceResult = new List<ZombieDice>();
+        private ZombiePlayer _player;
+        
+        private DiceEmitter<ZombieDice> _emitter;
 
-        public DiceManager()
+        private bool diceRollFinished = false;
+        private bool diceRollStarted = false;
+        
+        /**
+         * rolling 3 random dice
+         *
+         * checks that there are available dice
+         * if not restocking is done
+         * then the dice are thrown
+         * scoring is examined
+         */
+        public void rollTheDice(ZombiePlayer player)
         {
-            dicePool = new List<ZombieDice>();
-            diceResult = new List<ZombieDice>();
+            // if (diceRollFinished)
+            // {
+            //     if (diceRollStarted == false)
+            //     {
+            //         diceRollFinished = false;
+            //         diceRollStarted = true;
+            //
+            //         CreateNewDiceList();
+            //         //throw dices!
+            //         
+            //     }
+            //     else
+            //     {
+            //         //dices where thrown, dices fallen?
+            //         //check the dices beeing idle
+            //         foreach (var throwenDice in _rollingDiceList)
+            //         {
+            //             
+            //         }
+            //     }
+            //
+            // }
         }
 
-        public List<DiceBehaviour<ZombieDice>> throwDice(List<DiceBehaviour<ZombieDice>> dice){
-            return null;
-        }
-
-        public void setDicePool(List<ZombieDice> dicePool)
+        /**
+         * creates a new set of dice to throw
+         */
+        private void CreateNewDiceList()
         {
-            this.dicePool = dicePool;
+            
+            for (; _rollingDiceList.Count < totalDice;)
+            {
+                _rollingDiceList.Add(GetRandomDice());
+            }
         }
-               
+
+
+        /**
+         * returns a new random dice from the stock if there are.
+         * if not a restocking is initiated by taking the player brains
+         */
+        private ZombieDice GetRandomDice()
+        {
+            if (_dicePool.Count == 0)
+            {
+                //restock player brains
+                RestockBrains();
+            }
+            return _dicePool[rnd.Next(0, _dicePool.Count - 1)];
+            // return _dicePool[Random.Range(0, _dicePool.Count - 1)];
+        }
+
+        /**
+         * save player brain score
+         * remove brains from player list and restock
+         */
+        private void RestockBrains()
+        {
+            _brainsScore += _player.diceBrains.Count;
+            _dicePool.AddRange(_player.diceBrains);
+        }
+
         public bool isTurnLost()
         {
             return countHits() > MAX_HIT_COUNT;
@@ -44,13 +118,9 @@ namespace Modules.DicingZombies.Manager
                     hitCount++;
                 }
             }
-            Random rnd = new Random(); //demo
             hitCount =  rnd.Next(4); 
+            // hitCount =  Random.Range(0, 4);
             return hitCount;
-        }
-
-        public void rollTheDice()
-        {
         }
 
         public int getScore()
@@ -63,8 +133,8 @@ namespace Modules.DicingZombies.Manager
                     brainScore++;
                 }
             }
-            Random rnd = new Random(); //demo
             brainScore = rnd.Next(1,3);
+            // brainScore = Random.Range(1, 3);
             return brainScore;
         }
 
@@ -102,7 +172,7 @@ namespace Modules.DicingZombies.Manager
             {
                 if (ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()))
                 {
-                    dicePool.Add(dice);
+                    _dicePool.Add(dice);
                 }
             }
             diceResult.RemoveAll(dice => ZombieDiceValueEnum.Escape.Equals(dice.GetDiceValue()));
@@ -110,15 +180,14 @@ namespace Modules.DicingZombies.Manager
 
         private void restockFromBrains()
         {
-            if (dicePool.Count <= DICE_ROLL_AMOUNT)
+            if (_dicePool.Count <= DICE_ROLL_AMOUNT)
             {
                 foreach (ZombieDice dice in diceResult)
                 {
                     if (ZombieDiceValueEnum.Brain.Equals(dice.GetDiceValue()))
                     {
-                        dicePool.Add(dice);
+                        _dicePool.Add(dice);
                     }
-
                 }
             }
         }
