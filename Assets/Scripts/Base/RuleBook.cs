@@ -9,10 +9,15 @@ namespace Base
 {
     public abstract class RuleBook
     {
-        private Dictionary<String, GameObject> _holder = new Dictionary<string, GameObject>();
         private String _ruleBookTitle;
+        private MenuManager _menuManager;
         public abstract Player getRuleBookPlayer(Player player);
-        public abstract IGameState SetupStateMachine();
+        public abstract List<BaseMenu> GetGameMenus();
+
+        /**
+         * creates all game specific entities and returns the initial state to start the gameloop
+         */
+        public abstract IGameState SetupGame();
 
         public string ruleBookTitle
         {
@@ -20,10 +25,10 @@ namespace Base
             set => _ruleBookTitle = value;
         }
 
-        public Dictionary<string, GameObject> holder
+        public MenuManager menuManager
         {
-            get => _holder;
-            set => _holder = value;
+            get => _menuManager;
+            set => _menuManager = value;
         }
     }
 }

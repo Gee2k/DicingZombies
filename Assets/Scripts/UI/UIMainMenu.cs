@@ -2,11 +2,10 @@
 using Modules.DicingZombies;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class UIMainMenu : MonoBehaviour
 {
     private GameManager _gameManager;
     private int _playerAmount = 1;
-    private GameObject _mainMenuUI;
     
     //does not belong here but unity does not find inactive objects
     private GameObject _dicingMenu;
@@ -14,13 +13,6 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         _gameManager = (GameManager)GameObject.Find("GameManager").GetComponent(typeof(GameManager));
-        _mainMenuUI = GameObject.Find("MainMenu");
-        
-        //decactivate all other menus//
-        
-        //messi solution will fix later
-        _dicingMenu = GameObject.Find("DiceMenu");
-        _dicingMenu.SetActive(false);
     }
 
     public void SetPlayer(int index)
@@ -32,10 +24,10 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         DicingZombiesRuleBook ruleBook = new DicingZombiesRuleBook();
-        ruleBook.holder.Add("DiceMenu", _dicingMenu);
-        
         _gameManager.SetupGame(ruleBook);
-        _mainMenuUI.SetActive(false);
+        
+        // _mainMenuUI.SetActive(false);
+        _gameManager.menuManager.hideMenu("MainMenu");
     }
 
     public void QuitGame()

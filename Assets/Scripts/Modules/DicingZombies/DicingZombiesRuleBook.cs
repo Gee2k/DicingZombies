@@ -24,8 +24,9 @@ namespace Modules.DicingZombies
         private ZombieDice _redDice;
         
         readonly List<ZombieDice> _zombieDices = new List<ZombieDice>();
-        
         private List<GenericGameState> _gameStates = new List<GenericGameState>();
+        
+        List<BaseMenu> baseMenus = new List<BaseMenu>(){new BaseMenu("DiceMenu", false)};
         
         //
         // Rule specific stuff
@@ -74,12 +75,10 @@ namespace Modules.DicingZombies
          * creates initial gameloop for DicingZombies
          * adds all necessary states and managers
          */
-        public override IGameState SetupStateMachine()
+        public override IGameState SetupGame()
         {
             DiceManager diceManager = new DiceManager();
             PlayerManager playerManager = createPlayerManagerForDemo();
-            MenuManager menuManager = new MenuManager();
-            menuManager.diceMenu = holder["DiceMenu"];
 
             EndTurnState endTurnState = new EndTurnState();
             SwitchPlayerState switchPlayerState = new SwitchPlayerState();
@@ -92,13 +91,13 @@ namespace Modules.DicingZombies
             {
                 gameState.diceManager = diceManager;
                 gameState.playerManager = playerManager;
-                gameState.menuManager = menuManager;
                 gameState.ruleBook = this;
             }
 
             endTurnState.setSwitchPlayerState(switchPlayerState);
             switchPlayerState.setRollDiceState(rollDiceState);
             rollDiceState.setEndTurnState(endTurnState);
+            rollDiceState.menuManager = menuManager;
 
             return switchPlayerState;
         }
@@ -119,7 +118,12 @@ namespace Modules.DicingZombies
             players.Add(newPlayer);
             return new PlayerManager(players);
         }
-        
+
+        public override List<BaseMenu> GetGameMenus()
+        {
+            return baseMenus;
+        }
+
         //
         // Rule specific stuff
         //

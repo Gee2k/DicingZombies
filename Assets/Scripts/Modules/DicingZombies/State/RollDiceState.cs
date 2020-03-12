@@ -27,8 +27,8 @@ namespace Modules.DicingZombies.State
             }
             else
             {
-                // if (diceManager.diceThrowFinished())
-                if (true)
+                if (diceManager.diceThrowFinished())
+                // if (true)
                 {
                     //if player has 3 hits or does not want to play
                     if (ruleBook.isPlayerDead(playerManager.getCurrentPlayer()))
@@ -42,19 +42,19 @@ namespace Modules.DicingZombies.State
                     {
                         _waitingForPlayerInput = true;
                         saveScore();
-                        menuManager.ActivateDicingMenu();
+                        menuManager.showMenu("DiceMenu");
                         Debug.Log(playerManager.getCurrentPlayer().name + " has now " +
                                   playerManager.getCurrentPlayer().getBrainScore() + " brains");
                     }
                     else
                     {
-                        if (menuManager.throwDice)
+                        if (menuManager.GetMenuLogic("DiceMenu").GetComponent<UIDicingMenu>().throwDice)
                         {
                             //resetting states leads to new throw
                             resetDiceStates();
                         }
                         
-                        if (menuManager.skipThrow)
+                        if (menuManager.GetMenuLogic("DiceMenu").GetComponent<UIDicingMenu>().skipThrow)
                         {
                             resetDiceStates();
                             return endTurnState;

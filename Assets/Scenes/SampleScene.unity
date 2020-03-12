@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 142051566}
   m_Layer: 5
   m_Name: DiceMenu
-  m_TagString: Untagged
+  m_TagString: initiallyHidden
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,7 +396,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 142051564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 877448ac39a1e384f874a0f7c6b86451, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a194104fbaae4d429bb6730b12bf243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &170076733
@@ -3490,7 +3490,7 @@ GameObject:
   - component: {fileID: 1808091450}
   m_Layer: 5
   m_Name: MainMenu
-  m_TagString: Untagged
+  m_TagString: main_menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

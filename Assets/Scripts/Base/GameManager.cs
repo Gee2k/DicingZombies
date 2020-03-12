@@ -1,17 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using Base.Assets;
 using UnityEngine;
 using Base.State;
+using Modules.DicingZombies;
 
 namespace Base
 {
     public class GameManager : MonoBehaviour
     {
         private IGameState _gameState;
-        private GameObject _mainMenuUI;
-
+        private MenuManager _menuManager;
+       
         private void Start()
         {
-            _mainMenuUI = GameObject.Find("MainMenu");
+            _menuManager = new MenuManager();
+            //initialize menus
+            BaseMenu mainMenu = new BaseMenu("MainMenu");
+            _menuManager.AddMenu(mainMenu);
         }
 
         // Update is called once per frame
@@ -22,9 +28,9 @@ namespace Base
             {
                 _gameState = _gameState?.update();
             }
-            else if (_gameState == null && !_mainMenuUI.activeSelf)
+            else if (_gameState == null)
             {
-                _mainMenuUI.SetActive(true);
+                _menuManager.showMenu("MainMenu");
                 Debug.Log("[GameManager] reenabled Menu");
             }
         }
@@ -35,7 +41,7 @@ namespace Base
             {
                 Console.WriteLine("[GameManager] create new Game of type " + ruleBook.ruleBookTitle);
 
-                SetupState setupState = new SetupState(ruleBook);    //todo pass RuleBook to setup which is chosen in the menu by the player
+                SetupState setupState = new SetupState(ruleBook, _menuManager);    //todo pass RuleBook to setup which is chosen in the menu by the player
                 PlayState playState = new PlayState();
                 EndState endState = new EndState();
 
@@ -45,6 +51,11 @@ namespace Base
 
                 _gameState = setupState;
             }
+        }
+
+        public MenuManager menuManager
+        {
+            get => _menuManager;
         }
     }
 }
