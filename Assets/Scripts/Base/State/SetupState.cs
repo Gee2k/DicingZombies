@@ -12,12 +12,14 @@ namespace Base.State
         private List<Player> _players = new List<Player>();
         private Game _game;
 
-        public SetupState(RuleBook ruleBook)
+        public SetupState(RuleBook ruleBook, MenuManager menuManager)
         {
             //for test purpose create Game here
             // RuleBook dicingZombiesRuleBook = new DicingZombiesRuleBook();
             // _game = new Game.Builder().withPlayers(_players).usingGameRules(dicingZombiesRuleBook).build();
-            _game = new Game.Builder().withPlayers(_players).usingGameRules(ruleBook).build();
+            _game = new Game.Builder().withPlayers(_players).usingGameRules(ruleBook).build(menuManager);
+            menuManager.AddMenus(ruleBook.GetGameMenus());
+            menuManager.InitializeMenus();
         }
 
         public IGameState update()

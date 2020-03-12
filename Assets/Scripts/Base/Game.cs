@@ -36,18 +36,18 @@ namespace Base
                 return this;
             }
 
-            public Game build()
+            public Game build(MenuManager menuManager)
             {
                 Debug.Log("[Game] new game created of type " + _ruleBook.ruleBookTitle + "");
                 //upgrade Players to RuleBook players
                 List<Player> ruleBookPlayers = new List<Player>();
-                
+                _ruleBook.menuManager = menuManager;
                 foreach (var player in _players)
                 {
                     ruleBookPlayers.Add(_ruleBook.getRuleBookPlayer(player));
                 }
                 
-                return new Game(_ruleBook, ruleBookPlayers, _ruleBook.SetupStateMachine());
+                return new Game(_ruleBook, ruleBookPlayers, _ruleBook.SetupGame());
             }
         }
 

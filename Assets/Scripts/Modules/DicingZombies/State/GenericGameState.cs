@@ -1,3 +1,4 @@
+using Base;
 using Modules.DicingZombies.Manager;
 
 namespace Modules.DicingZombies.State
