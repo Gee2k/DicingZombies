@@ -2,16 +2,17 @@
 using Modules.DicingZombies;
 using UnityEngine;
 
-public class MainMenu : MonoBehaviour
+public class UIMainMenu : MonoBehaviour
 {
     private GameManager _gameManager;
     private int _playerAmount = 1;
-    private GameObject _mainMenuUI;
+    
+    //does not belong here but unity does not find inactive objects
+    private GameObject _dicingMenu;
 
     private void Start()
     {
         _gameManager = (GameManager)GameObject.Find("GameManager").GetComponent(typeof(GameManager));
-        _mainMenuUI = GameObject.Find("MainMenu");
     }
 
     public void SetPlayer(int index)
@@ -22,8 +23,11 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        _gameManager.SetupGame(new DicingZombiesRuleBook());
-        _mainMenuUI.SetActive(false);
+        DicingZombiesRuleBook ruleBook = new DicingZombiesRuleBook();
+        _gameManager.SetupGame(ruleBook);
+        
+        // _mainMenuUI.SetActive(false);
+        _gameManager.menuManager.hideMenu("MainMenu");
     }
 
     public void QuitGame()

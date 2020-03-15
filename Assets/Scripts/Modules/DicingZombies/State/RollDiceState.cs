@@ -11,32 +11,65 @@ namespace Modules.DicingZombies.State
     {
         private EndTurnState endTurnState;
         private ZombiePlayer activePlayer;
-        private const int MAX_HIT_COUNT = 3;
-        private const int DICE_ROLL_AMOUNT = 3;
+
+        private bool _diceThrown = false;
+        private bool _waitingForPlayerInput = false;
+        private bool _playerInputDone = false;
 
         public IGameState update()
         {
-            Debug.Log("[RollDiceState] inside");
+            Debug.Log("[PLAY-RollDiceState] inside");
 
-            //// rollTheDIce!
-            diceManager.rollTheDice(activePlayer);
-
-
-            //if player has 3 hits or does not want to play
-            if (isPlayerDead())
+            if (!_diceThrown)
             {
-                return endTurnState;
+                _diceThrown = true;
+                diceManager.rollTheDice(activePlayer);
             }
-            
-            //play did not lose, so save the points
-            saveScore();
-            Debug.Log(playerManager.getCurrentPlayer().name + " has now " + playerManager.getCurrentPlayer().getBrainScore() + " brains");
-            
-            if (playerSkipsTurn())
+            else
             {
-                return endTurnState;
+                if (diceManager.diceThrowFinished())
+                // if (true)
+                {
+                    //if player has 3 hits or does not want to play
+                    if (ruleBook.isPlayerDead(playerManager.getCurrentPlayer()))
+                    {
+                        resetDiceStates();
+                        return endTurnState;
+                    }
+
+
+                    if (!_waitingForPlayerInput)
+                    {
+                        _waitingForPlayerInput = true;
+                        saveScore();
+                        menuManager.showMenu("DiceMenu");
+                        Debug.Log(playerManager.getCurrentPlayer().name + " has now " +
+                                  playerManager.getCurrentPlayer().getBrainScore() + " brains");
+                    }
+                    else
+                    {
+                        if (menuManager.GetMenuLogic("DiceMenu").GetComponent<UIDicingMenu>().throwDice)
+                        {
+                            //resetting states leads to new throw
+                            resetDiceStates();
+                        }
+                        
+                        if (menuManager.GetMenuLogic("DiceMenu").GetComponent<UIDicingMenu>().skipThrow)
+                        {
+                            resetDiceStates();
+                            return endTurnState;
+                        }    
+                    }
+                }
             }
             return this;
+        }
+
+        private void resetDiceStates()
+        {
+            _diceThrown = false;
+            _waitingForPlayerInput = false;
+            _playerInputDone = false;
         }
 
         public void setEndTurnState(EndTurnState gameState)
@@ -44,26 +77,6 @@ namespace Modules.DicingZombies.State
             this.endTurnState = gameState;
         }
         
-        public bool isPlayerDead()
-        {
-            Debug.Log(playerManager.getCurrentPlayer().name + " got shot and lost the turn");
-            // return playerManager.activePlayer.diceShotguns.Count >= MAX_HIT_COUNT;
-            return playerManager.getCurrentPlayer().diceShotguns.Count >= MAX_HIT_COUNT;
-        }
-        
-        private bool playerSkipsTurn()
-        {
-            bool isSkipping = Random.Range(0, 1) == 0;
-            // System.Random rnd = new System.Random();
-            // return rnd.Next(2) == 0; // quick boolean random for 50/50
-            if (isSkipping)
-            {
-                Debug.Log(playerManager.getCurrentPlayer().name + " skips her turn");
-            }
-
-            return isSkipping;
-        }
-
         private void saveScore()
         {
             playerManager.getCurrentPlayer().addBrainScore(diceManager.getScore());

@@ -191,5 +191,10 @@ namespace Modules.DicingZombies.Manager
                 }
             }
         }
+
+        public bool diceThrowFinished()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

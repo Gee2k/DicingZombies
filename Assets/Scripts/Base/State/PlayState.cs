@@ -15,7 +15,7 @@ namespace Base.State
 
         public IGameState update()
         {
-            Debug.Log("[PlayState] inside");
+            Debug.Log("[BASE-PlayState] inside");
             if (_game != null)
             {
                 game = game.checkGameState();

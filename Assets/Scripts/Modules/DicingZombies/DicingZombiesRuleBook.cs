@@ -8,6 +8,7 @@ using Modules.DicingZombies.Manager;
 using Modules.DicingZombies.State;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
 using Modules.DicingZombies.Manager;
 
 namespace Modules.DicingZombies
@@ -23,8 +24,16 @@ namespace Modules.DicingZombies
         private ZombieDice _redDice;
         
         readonly List<ZombieDice> _zombieDices = new List<ZombieDice>();
-        
         private List<GenericGameState> _gameStates = new List<GenericGameState>();
+        
+        List<BaseMenu> baseMenus = new List<BaseMenu>(){new BaseMenu("DiceMenu", false)};
+        
+        //
+        // Rule specific stuff
+        //
+
+        private static int MAX_HIT_COUNT = 3;
+        
         public DicingZombiesRuleBook()
         {
             ruleBookTitle = "DicingZombies";
@@ -66,11 +75,11 @@ namespace Modules.DicingZombies
          * creates initial gameloop for DicingZombies
          * adds all necessary states and managers
          */
-        public override IGameState SetupStateMachine()
+        public override IGameState SetupGame()
         {
             DiceManager diceManager = new DiceManager();
             PlayerManager playerManager = createPlayerManagerForDemo();
-            
+
             EndTurnState endTurnState = new EndTurnState();
             SwitchPlayerState switchPlayerState = new SwitchPlayerState();
             RollDiceState rollDiceState = new RollDiceState();
@@ -82,11 +91,13 @@ namespace Modules.DicingZombies
             {
                 gameState.diceManager = diceManager;
                 gameState.playerManager = playerManager;
+                gameState.ruleBook = this;
             }
 
             endTurnState.setSwitchPlayerState(switchPlayerState);
             switchPlayerState.setRollDiceState(rollDiceState);
             rollDiceState.setEndTurnState(endTurnState);
+            rollDiceState.menuManager = menuManager;
 
             return switchPlayerState;
         }
@@ -106,6 +117,25 @@ namespace Modules.DicingZombies
             newPlayer = new ZombiePlayer(ZombieNameGenerator.getRandomZombieName());
             players.Add(newPlayer);
             return new PlayerManager(players);
+        }
+
+        public override List<BaseMenu> GetGameMenus()
+        {
+            return baseMenus;
+        }
+
+        //
+        // Rule specific stuff
+        //
+        
+        public bool isPlayerDead(ZombiePlayer player)
+        {
+            if (player.diceShotguns.Count >= MAX_HIT_COUNT)
+            {
+                Debug.Log(player.name + " got shot and lost the turn");
+                return true;
+            }
+            return false;
         }
     }
 }

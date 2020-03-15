@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - game_ceiling
+  - dice_menu
+  - main_menu
+  - initiallyHidden
   layers:
   - Default
   - TransparentFX

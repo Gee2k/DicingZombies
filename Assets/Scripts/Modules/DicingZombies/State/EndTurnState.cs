@@ -10,7 +10,7 @@ namespace Modules.DicingZombies.State
         
         public IGameState update()
         {
-            Debug.Log("[EndTurnState] inside");
+            Debug.Log("[PLAY-EndTurnState] inside");
             if(isGameOver())
             {
                 return null;
